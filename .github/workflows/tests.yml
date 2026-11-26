@@ -9,8 +9,8 @@ on:
       - main
   workflow_dispatch:
   schedule:
-    - cron: "50 0 * * *"
-      timezone: "Europe/Moscow"
+    - cron: '0 18 * * *'
+      timezone: 'Europe/Moscow'
 
 jobs:
   test:
