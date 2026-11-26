@@ -29,3 +29,14 @@ jobs:
 
       - name: Run tests
         run: python -m pytest
+        
+              - name: Run tests
+        run: python -m pytest --junitxml=pytest-report.xml
+
+      - name: Upload test report
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: pytest-report
+          path: pytest-report.xml
+          if-no-files-found: ignore
