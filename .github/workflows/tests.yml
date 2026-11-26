@@ -30,7 +30,7 @@ jobs:
       - name: Run tests
         run: python -m pytest
         
-              - name: Run tests
+      - name: Run tests
         run: python -m pytest --junitxml=pytest-report.xml
 
       - name: Upload test report
