@@ -17,7 +17,7 @@ jobs:
           name: security-report
           path: report.txt
           retention-days: 1
-          if-no-file-found: error
+          if-no-files-found: error
   
   read-report:
     needs: generate-report
@@ -27,12 +27,5 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: security-report
-      - name: 
+      - name: Print report
         run: cat report.txt
-    
-   
-
-  - name: read report
-    runs-on: ubuntu-latest
-    uses: actions/download-artifact@v4
-    run: cat report.txt 
