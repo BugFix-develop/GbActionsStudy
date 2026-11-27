@@ -1,0 +1,22 @@
+name: Step2 Outputs
+
+on:
+  workflow_dispatch:
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    outputs:
+      report-name: ${{ steps.gen.outputs.filename }}
+    steps:
+      - id: meta
+        run: echo "app_version=1.0.0 and scan_passed=true" >> "$GITHUB_OUTPUT"
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: prepare
+    outputs:
+      if: ${{ needs.prepare.outputs.scan_passed == 'true' }}
+    steps:
+      - name: "вывод"
+        run: cat ${{ needs.job1.outputs.scan_status }}
