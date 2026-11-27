@@ -21,4 +21,4 @@ jobs:
     if: ${{ needs.prepare.outputs.scan_passed == 'true' }}
     steps:
       - name: "вывод"
-        run: cat ${{ needs.job1.outputs.app_version }}
+        run: echo ${{ needs.job1.outputs.app_version }}
