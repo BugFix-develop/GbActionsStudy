@@ -7,8 +7,8 @@ jobs:
   prepare:
     runs-on: ubuntu-latest
     outputs:
-      app_version: ${{ steps.gen.outputs.app_version }}
-      scan_passed: ${{steps.gen.outputs.scan_passed}}
+      app_version: ${{ steps.meta.outputs.app_version }}
+      scan_passed: ${{steps.meta.outputs.scan_passed}}
     steps:
       - id: meta
         run: |
@@ -21,4 +21,4 @@ jobs:
     if: ${{ needs.prepare.outputs.scan_passed == 'true' }}
     steps:
       - name: "вывод"
-        run: echo ${{ needs.job1.outputs.app_version }}
+        run: echo ${{ needs.prepare.outputs.app_version }}
